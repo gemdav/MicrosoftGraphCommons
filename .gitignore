@@ -41,3 +41,5 @@
 /nativemobile/builds/
 /*.launch
 /modeler-merge-marker
+/microsoftgraphcommons.mpr.bak
+/microsoftgraphcommons.mpr.lock
