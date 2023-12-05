@@ -1,4 +1,4 @@
-# Microsoft Grap Commons module for Mendix
+# Microsoft Graph Commons module for Mendix
 
 This module is an extension to the [Microsoft Graph Connector](https://github.com/swkruger/Mendix-MSGraphConnector) module which serves as a connector module on a rather abstract level. This module therefore provides convenient to use import and export mappings as well as plug-and-play microflows for some of the mostly used operations of the Microsoft Graph API.
 
