@@ -4,11 +4,11 @@ This module is an extension to the [Microsoft Graph Connector](https://github.co
 
 ## Typical usage scenario
 
-For Mendix developers seeking to enhance their Mendix applications with automated operations in Microsoft producte (Azure, Outlook, ...), the Mendix connector for Microsoft Graph offers a valuable solution. Note that his extension covers only covers some of the operations of the Micsrosoft Graph API. However, you can always fall back on the Microsoft Graph Connector module and make you own personalized requests using the generic microflows provided there.
+For Mendix developers seeking to enhance their Mendix applications with automated operations in Microsoft products (Azure, Outlook, Teams, ...), the Mendix connector for Microsoft Graph offers a valuable solution. Note that his extension covers only covers some of the operations of the Micsrosoft Graph API. However, you can always fall back on the Microsoft Graph Connector module and make you own personalized requests using the generic microflows provided there.
 
 ## Features
 
-- Send Mails
+- Send mails
 - Get organization users
 - Create Outlook events
 - ...
