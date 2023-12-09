@@ -20,9 +20,9 @@ For preparation instructions visit the [Github repository of the Microsoft Graph
 ## Installation
 
 1. Install the Dependencies from the Mendix Marketplace:
-   - Microsoft Graph Connector
+   - [Microsoft Graph Connector](https://marketplace.mendix.com/link/component/117007)
 2. Follow the [installation instructions of the Microsoft Graph Connector module](https://github.com/swkruger/Mendix-MSGraphConnector#installation--configuration)
-3. Install the Microsoft Graph Commons from the Mendix Marketplace
+3. Install the [Microsoft Graph Commons](https://marketplace.mendix.com/link/component/219754) from the Mendix Marketplace
 4. Assign the module roles to your projects user roles. Users can use the microflows provided in the USE_ME folder.
 
 ## Configuration
