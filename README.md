@@ -4,11 +4,11 @@ This module is an extension to the [Microsoft Graph Connector](https://github.co
 
 ## Typical usage scenario
 
-For Mendix developers seeking to enhance their Mendix applications with automated operations in Microsoft producte (Azure, Outlook, ...), the Mendix connector for Microsoft Graph offers a valuable solution. Note that his extension covers only covers some of the operations of the Micsrosoft Graph API. However, you can always fall back on the Microsoft Graph Connector module and make you own personalized requests using the generic microflows provided there.
+For Mendix developers seeking to enhance their Mendix applications with automated operations in Microsoft products (Azure, Outlook, Teams, ...), the Mendix connector for Microsoft Graph offers a valuable solution. Note that his extension covers only covers some of the operations of the Micsrosoft Graph API. However, you can always fall back on the Microsoft Graph Connector module and make you own personalized requests using the generic microflows provided there.
 
 ## Features
 
-- Send Mails
+- Send mails
 - Get organization users
 - Create Outlook events
 - ...
@@ -20,10 +20,10 @@ For preparation instructions visit the [Github repository of the Microsoft Graph
 ## Installation
 
 1. Install the Dependencies from the Mendix Marketplace:
-   - Microsoft Graph Connector
-2. Follow the [installation instructions of the Microsoft Graph Connector module](https://github.com/swkruger/Mendix-MSGraphConnector#installation--configuration)
-3. Install the Microsoft Graph Commons from the Mendix Marketplace
-4. Assign the module roles to your projects user roles. Users can use the microflows provided in the USE_ME folder.
+   - [Microsoft Graph Connector](https://marketplace.mendix.com/link/component/117007)
+3. Follow the [installation instructions of the Microsoft Graph Connector module](https://github.com/swkruger/Mendix-MSGraphConnector#installation--configuration)
+4. Install the [Microsoft Graph Commons](https://marketplace.mendix.com/link/component/219754) from the Mendix Marketplace
+5. Assign the module roles to your projects user roles. Users can use the microflows provided in the USE_ME folder.
 
 ## Configuration
 
