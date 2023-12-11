@@ -33,6 +33,6 @@ For configuration instructions visit the [Github repository of the Microsoft Gra
 
 After [preparation](#preparation), [installation](#installation) and [configuration](#configuration) you can now use the micrflows from the USE_ME package of the Microsoft Graph Commons module by passing the required parameters to it.
 
-## Help improving this package
+## Help improving this module
 
 I built this module based on my own usage of the Microsoft Graph API. Please let me know if you are missing any commonly used operations of the API so I can consider adding them in a later version.
