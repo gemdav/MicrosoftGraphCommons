@@ -15,21 +15,18 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Returns the user that last changed this object as System.User 
- * 
+ * Returns the user that last changed this object as System.User 
+ * 
  * (or empty if not applicable).
  */
 public class getLastChangedByUser extends CustomJavaAction<IMendixObject>
 {
-	private final IMendixObject thing;
+	private IMendixObject thing;
 
-	public getLastChangedByUser(
-		IContext context,
-		IMendixObject _thing
-	)
+	public getLastChangedByUser(IContext context, IMendixObject thing)
 	{
 		super(context);
-		this.thing = _thing;
+		this.thing = thing;
 	}
 
 	@java.lang.Override

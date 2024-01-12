@@ -19,34 +19,27 @@ import communitycommons.Misc;
  */
 public class OverlayPdfDocument extends CustomJavaAction<java.lang.Boolean>
 {
-	/** @deprecated use generatedDocument.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __generatedDocument;
-	private final system.proxies.FileDocument generatedDocument;
-	/** @deprecated use overlay.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __overlay;
-	private final system.proxies.FileDocument overlay;
-	private final java.lang.Boolean onTopOfContent;
+	private IMendixObject __generatedDocument;
+	private system.proxies.FileDocument generatedDocument;
+	private IMendixObject __overlay;
+	private system.proxies.FileDocument overlay;
+	private java.lang.Boolean onTopOfContent;
 
-	public OverlayPdfDocument(
-		IContext context,
-		IMendixObject _generatedDocument,
-		IMendixObject _overlay,
-		java.lang.Boolean _onTopOfContent
-	)
+	public OverlayPdfDocument(IContext context, IMendixObject generatedDocument, IMendixObject overlay, java.lang.Boolean onTopOfContent)
 	{
 		super(context);
-		this.__generatedDocument = _generatedDocument;
-		this.generatedDocument = _generatedDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), _generatedDocument);
-		this.__overlay = _overlay;
-		this.overlay = _overlay == null ? null : system.proxies.FileDocument.initialize(getContext(), _overlay);
-		this.onTopOfContent = _onTopOfContent;
+		this.__generatedDocument = generatedDocument;
+		this.__overlay = overlay;
+		this.onTopOfContent = onTopOfContent;
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
+		this.generatedDocument = this.__generatedDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), __generatedDocument);
+
+		this.overlay = this.__overlay == null ? null : system.proxies.FileDocument.initialize(getContext(), __overlay);
+
 		// BEGIN USER CODE
 		return Misc.overlayPdf(getContext(), __generatedDocument, __overlay, onTopOfContent);
 		// END USER CODE

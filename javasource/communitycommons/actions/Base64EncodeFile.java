@@ -19,24 +19,20 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class Base64EncodeFile extends CustomJavaAction<java.lang.String>
 {
-	/** @deprecated use file.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __file;
-	private final system.proxies.FileDocument file;
+	private IMendixObject __file;
+	private system.proxies.FileDocument file;
 
-	public Base64EncodeFile(
-		IContext context,
-		IMendixObject _file
-	)
+	public Base64EncodeFile(IContext context, IMendixObject file)
 	{
 		super(context);
-		this.__file = _file;
-		this.file = _file == null ? null : system.proxies.FileDocument.initialize(getContext(), _file);
+		this.__file = file;
 	}
 
 	@java.lang.Override
 	public java.lang.String executeAction() throws Exception
 	{
+		this.file = this.__file == null ? null : system.proxies.FileDocument.initialize(getContext(), __file);
+
 		// BEGIN USER CODE
 		return StringUtils.base64EncodeFile(getContext(), file);
 		// END USER CODE

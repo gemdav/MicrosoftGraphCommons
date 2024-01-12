@@ -15,21 +15,18 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Returns the user that created an object 
- * 
+ * Returns the user that created an object 
+ * 
  * (or empty if not applicable).
  */
 public class getCreatedByUser extends CustomJavaAction<IMendixObject>
 {
-	private final IMendixObject thing;
+	private IMendixObject thing;
 
-	public getCreatedByUser(
-		IContext context,
-		IMendixObject _thing
-	)
+	public getCreatedByUser(IContext context, IMendixObject thing)
 	{
 		super(context);
-		this.thing = _thing;
+		this.thing = thing;
 	}
 
 	@java.lang.Override

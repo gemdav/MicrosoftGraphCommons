@@ -18,15 +18,12 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class getTypeAsString extends CustomJavaAction<java.lang.String>
 {
-	private final IMendixObject instance;
+	private IMendixObject instance;
 
-	public getTypeAsString(
-		IContext context,
-		IMendixObject _instance
-	)
+	public getTypeAsString(IContext context, IMendixObject instance)
 	{
 		super(context);
-		this.instance = _instance;
+		this.instance = instance;
 	}
 
 	@java.lang.Override

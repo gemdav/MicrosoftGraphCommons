@@ -21,27 +21,22 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  */
 public class GetFileContentsFromResource extends CustomJavaAction<java.lang.Boolean>
 {
-	private final java.lang.String filename;
-	/** @deprecated use fileDocument.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __fileDocument;
-	private final system.proxies.FileDocument fileDocument;
+	private java.lang.String filename;
+	private IMendixObject __fileDocument;
+	private system.proxies.FileDocument fileDocument;
 
-	public GetFileContentsFromResource(
-		IContext context,
-		java.lang.String _filename,
-		IMendixObject _fileDocument
-	)
+	public GetFileContentsFromResource(IContext context, java.lang.String filename, IMendixObject fileDocument)
 	{
 		super(context);
-		this.filename = _filename;
-		this.__fileDocument = _fileDocument;
-		this.fileDocument = _fileDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), _fileDocument);
+		this.filename = filename;
+		this.__fileDocument = fileDocument;
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
+		this.fileDocument = this.__fileDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), __fileDocument);
+
 		// BEGIN USER CODE
 		File myFile = new File(Core.getConfiguration().getResourcesPath() + 
 				File.separator + filename);

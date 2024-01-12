@@ -18,15 +18,12 @@ import communitycommons.Logging;
  */
 public class CreateLogNode extends CustomJavaAction<java.lang.Boolean>
 {
-	private final java.lang.String logNodeParameter;
+	private java.lang.String logNodeParameter;
 
-	public CreateLogNode(
-		IContext context,
-		java.lang.String _logNodeParameter
-	)
+	public CreateLogNode(IContext context, java.lang.String logNodeParameter)
 	{
 		super(context);
-		this.logNodeParameter = _logNodeParameter;
+		this.logNodeParameter = logNodeParameter;
 	}
 
 	@java.lang.Override

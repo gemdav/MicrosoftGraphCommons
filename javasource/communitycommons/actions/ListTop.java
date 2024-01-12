@@ -19,18 +19,14 @@ import communitycommons.Misc;
  */
 public class ListTop extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private final java.util.List<IMendixObject> ObjectList;
-	private final java.lang.Long Top;
+	private java.util.List<IMendixObject> ObjectList;
+	private java.lang.Long Top;
 
-	public ListTop(
-		IContext context,
-		java.util.List<IMendixObject> _objectList,
-		java.lang.Long _top
-	)
+	public ListTop(IContext context, java.util.List<IMendixObject> ObjectList, java.lang.Long Top)
 	{
 		super(context);
-		this.ObjectList = _objectList;
-		this.Top = _top;
+		this.ObjectList = ObjectList;
+		this.Top = Top;
 	}
 
 	@java.lang.Override

@@ -18,15 +18,12 @@ import communitycommons.StringUtils;
  */
 public class RegexQuote extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.String unquotedLiteral;
+	private java.lang.String unquotedLiteral;
 
-	public RegexQuote(
-		IContext context,
-		java.lang.String _unquotedLiteral
-	)
+	public RegexQuote(IContext context, java.lang.String unquotedLiteral)
 	{
 		super(context);
-		this.unquotedLiteral = _unquotedLiteral;
+		this.unquotedLiteral = unquotedLiteral;
 	}
 
 	@java.lang.Override

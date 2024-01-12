@@ -14,23 +14,20 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * (Behavior has changed since version 3.2. The exception is now properly propagated to the cient). 
- * 
- * Throws an exception.  This is very useful if the microflow is called by a webservice. If you throw this kind of exceptions, an fault message will be generated in the output, instead of an '501 Internal server' error.
- * 
+ * (Behavior has changed since version 3.2. The exception is now properly propagated to the cient). 
+ * 
+ * Throws an exception.  This is very useful if the microflow is called by a webservice. If you throw this kind of exceptions, an fault message will be generated in the output, instead of an '501 Internal server' error.
+ * 
  * If debug level of community commons is set to 'debug' the errors will be locally visible as well, otherwise not. Throwing a webservice exception states that the webservice invocation was incorrect, not the webservice implementation.
  */
 public class ThrowWebserviceException extends CustomJavaAction<java.lang.Boolean>
 {
-	private final java.lang.String faultstring;
+	private java.lang.String faultstring;
 
-	public ThrowWebserviceException(
-		IContext context,
-		java.lang.String _faultstring
-	)
+	public ThrowWebserviceException(IContext context, java.lang.String faultstring)
 	{
 		super(context);
-		this.faultstring = _faultstring;
+		this.faultstring = faultstring;
 	}
 
 	@java.lang.Override

@@ -18,18 +18,14 @@ import communitycommons.StringUtils;
  */
 public class RemoveEnd extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.String input;
-	private final java.lang.String toRemove;
+	private java.lang.String input;
+	private java.lang.String toRemove;
 
-	public RemoveEnd(
-		IContext context,
-		java.lang.String _input,
-		java.lang.String _toRemove
-	)
+	public RemoveEnd(IContext context, java.lang.String input, java.lang.String toRemove)
 	{
 		super(context);
-		this.input = _input;
-		this.toRemove = _toRemove;
+		this.input = input;
+		this.toRemove = toRemove;
 	}
 
 	@java.lang.Override
