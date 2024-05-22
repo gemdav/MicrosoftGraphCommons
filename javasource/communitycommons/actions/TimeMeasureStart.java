@@ -14,22 +14,19 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Start timing something, and print the result to the log. 
- * - TimerName. Should correspond to the TimerName used in TimeMeasureEnd.
- * 
+ * Start timing something, and print the result to the log. 
+ * - TimerName. Should correspond to the TimerName used in TimeMeasureEnd.
+ * 
  * Note that multiple timers can run at once. Existing timers can be restarted using this function as well.
  */
 public class TimeMeasureStart extends CustomJavaAction<java.lang.Boolean>
 {
-	private final java.lang.String TimerName;
+	private java.lang.String TimerName;
 
-	public TimeMeasureStart(
-		IContext context,
-		java.lang.String _timerName
-	)
+	public TimeMeasureStart(IContext context, java.lang.String TimerName)
 	{
 		super(context);
-		this.TimerName = _timerName;
+		this.TimerName = TimerName;
 	}
 
 	@java.lang.Override

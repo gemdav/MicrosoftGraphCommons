@@ -18,18 +18,14 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class GenerateHMAC_SHA256_hash extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.String key;
-	private final java.lang.String valueToEncrypt;
+	private java.lang.String key;
+	private java.lang.String valueToEncrypt;
 
-	public GenerateHMAC_SHA256_hash(
-		IContext context,
-		java.lang.String _key,
-		java.lang.String _valueToEncrypt
-	)
+	public GenerateHMAC_SHA256_hash(IContext context, java.lang.String key, java.lang.String valueToEncrypt)
 	{
 		super(context);
-		this.key = _key;
-		this.valueToEncrypt = _valueToEncrypt;
+		this.key = key;
+		this.valueToEncrypt = valueToEncrypt;
 	}
 
 	@java.lang.Override

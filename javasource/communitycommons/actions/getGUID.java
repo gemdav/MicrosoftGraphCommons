@@ -19,15 +19,12 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class getGUID extends CustomJavaAction<java.lang.Long>
 {
-	private final IMendixObject item;
+	private IMendixObject item;
 
-	public getGUID(
-		IContext context,
-		IMendixObject _item
-	)
+	public getGUID(IContext context, IMendixObject item)
 	{
 		super(context);
-		this.item = _item;
+		this.item = item;
 	}
 
 	@java.lang.Override

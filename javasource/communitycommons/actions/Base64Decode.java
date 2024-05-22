@@ -18,15 +18,12 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class Base64Decode extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.String encoded;
+	private java.lang.String encoded;
 
-	public Base64Decode(
-		IContext context,
-		java.lang.String _encoded
-	)
+	public Base64Decode(IContext context, java.lang.String encoded)
 	{
 		super(context);
-		this.encoded = _encoded;
+		this.encoded = encoded;
 	}
 
 	@java.lang.Override

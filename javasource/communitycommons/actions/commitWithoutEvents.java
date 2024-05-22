@@ -15,21 +15,18 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Commits an object, but without events. 
- * 
+ * Commits an object, but without events. 
+ * 
  * N.B. This function is not very useful when called from the model, but it is useful when called from custom Java code.
  */
 public class commitWithoutEvents extends CustomJavaAction<java.lang.Boolean>
 {
-	private final IMendixObject subject;
+	private IMendixObject subject;
 
-	public commitWithoutEvents(
-		IContext context,
-		IMendixObject _subject
-	)
+	public commitWithoutEvents(IContext context, IMendixObject subject)
 	{
 		super(context);
-		this.subject = _subject;
+		this.subject = subject;
 	}
 
 	@java.lang.Override

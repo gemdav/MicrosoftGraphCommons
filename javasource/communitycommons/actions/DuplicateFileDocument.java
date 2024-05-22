@@ -15,40 +15,34 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Clones the contents of one file document into another. 
- * - fileToClone : the source file
- * - cloneTarget : an initialized file document, in which the file will be stored.
- * 
- * Returns true if copied, returns file if the source had no contents, throws exception in any other case.
+ * Clones the contents of one file document into another. 
+ * - fileToClone : the source file
+ * - cloneTarget : an initialized file document, in which the file will be stored.
+ * 
+ * Returns true if copied, returns file if the source had no contents, throws exception in any other case.
  * Pre condition: HasContents of the 'fileToClone' need to be set to true, otherwise the action will not copy anything.
  */
 public class DuplicateFileDocument extends CustomJavaAction<java.lang.Boolean>
 {
-	/** @deprecated use fileToClone.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __fileToClone;
-	private final system.proxies.FileDocument fileToClone;
-	/** @deprecated use cloneTarget.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __cloneTarget;
-	private final system.proxies.FileDocument cloneTarget;
+	private IMendixObject __fileToClone;
+	private system.proxies.FileDocument fileToClone;
+	private IMendixObject __cloneTarget;
+	private system.proxies.FileDocument cloneTarget;
 
-	public DuplicateFileDocument(
-		IContext context,
-		IMendixObject _fileToClone,
-		IMendixObject _cloneTarget
-	)
+	public DuplicateFileDocument(IContext context, IMendixObject fileToClone, IMendixObject cloneTarget)
 	{
 		super(context);
-		this.__fileToClone = _fileToClone;
-		this.fileToClone = _fileToClone == null ? null : system.proxies.FileDocument.initialize(getContext(), _fileToClone);
-		this.__cloneTarget = _cloneTarget;
-		this.cloneTarget = _cloneTarget == null ? null : system.proxies.FileDocument.initialize(getContext(), _cloneTarget);
+		this.__fileToClone = fileToClone;
+		this.__cloneTarget = cloneTarget;
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
+		this.fileToClone = this.__fileToClone == null ? null : system.proxies.FileDocument.initialize(getContext(), __fileToClone);
+
+		this.cloneTarget = this.__cloneTarget == null ? null : system.proxies.FileDocument.initialize(getContext(), __cloneTarget);
+
 		// BEGIN USER CODE
 		return Misc.duplicateFileDocument(this.getContext(), fileToClone.getMendixObject(), cloneTarget.getMendixObject());
 		// END USER CODE

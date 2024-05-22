@@ -14,24 +14,21 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Encodes a string to HTML Entities, so that they can be displayed in the browser without breaking any layout. 
- * 
- * This is useful for special widgets which allow HTML to be rendered properly, including special characters as '<' and '&'. 
- * For example '<' will be encoded as '&lt;' and '&' will be encoded as '&amp;'
- * 
+ * Encodes a string to HTML Entities, so that they can be displayed in the browser without breaking any layout. 
+ * 
+ * This is useful for special widgets which allow HTML to be rendered properly, including special characters as '<' and '&'. 
+ * For example '<' will be encoded as '&lt;' and '&' will be encoded as '&amp;'
+ * 
  * Returns the encoded string.
  */
 public class HTMLEncode extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.String value;
+	private java.lang.String value;
 
-	public HTMLEncode(
-		IContext context,
-		java.lang.String _value
-	)
+	public HTMLEncode(IContext context, java.lang.String value)
 	{
 		super(context);
-		this.value = _value;
+		this.value = value;
 	}
 
 	@java.lang.Override

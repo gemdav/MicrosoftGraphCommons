@@ -18,15 +18,12 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class RandomString extends CustomJavaAction<java.lang.String>
 {
-	private final java.lang.Long length;
+	private java.lang.Long length;
 
-	public RandomString(
-		IContext context,
-		java.lang.Long _length
-	)
+	public RandomString(IContext context, java.lang.Long length)
 	{
 		super(context);
-		this.length = _length;
+		this.length = length;
 	}
 
 	@java.lang.Override

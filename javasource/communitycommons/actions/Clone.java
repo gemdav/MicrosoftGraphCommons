@@ -15,31 +15,26 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Clones objects
- * 
- * - Source: the original object to copy
- * - Target: the object to copy it into (should be of the same type, or a specialization)
- * - includeAssociations: whether to clone associations. 
- * 
+ * Clones objects
+ * 
+ * - Source: the original object to copy
+ * - Target: the object to copy it into (should be of the same type, or a specialization)
+ * - includeAssociations: whether to clone associations. 
+ * 
  * If associated objects need to be cloned as well, use deepClone, this function only copies the references, not the reffered objects. Target is not committed automatically.
  */
 public class Clone extends CustomJavaAction<java.lang.Boolean>
 {
-	private final IMendixObject source;
-	private final IMendixObject target;
-	private final java.lang.Boolean withAssociations;
+	private IMendixObject source;
+	private IMendixObject target;
+	private java.lang.Boolean withAssociations;
 
-	public Clone(
-		IContext context,
-		IMendixObject _source,
-		IMendixObject _target,
-		java.lang.Boolean _withAssociations
-	)
+	public Clone(IContext context, IMendixObject source, IMendixObject target, java.lang.Boolean withAssociations)
 	{
 		super(context);
-		this.source = _source;
-		this.target = _target;
-		this.withAssociations = _withAssociations;
+		this.source = source;
+		this.target = target;
+		this.withAssociations = withAssociations;
 	}
 
 	@java.lang.Override

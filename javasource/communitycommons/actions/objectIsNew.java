@@ -18,15 +18,12 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  */
 public class objectIsNew extends CustomJavaAction<java.lang.Boolean>
 {
-	private final IMendixObject mxObject;
+	private IMendixObject mxObject;
 
-	public objectIsNew(
-		IContext context,
-		IMendixObject _mxObject
-	)
+	public objectIsNew(IContext context, IMendixObject mxObject)
 	{
 		super(context);
-		this.mxObject = _mxObject;
+		this.mxObject = mxObject;
 	}
 
 	@java.lang.Override

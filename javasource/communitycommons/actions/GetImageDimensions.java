@@ -20,24 +20,20 @@ import java.io.InputStream;
 
 public class GetImageDimensions extends CustomJavaAction<IMendixObject>
 {
-	/** @deprecated use ImageParameter.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __ImageParameter;
-	private final system.proxies.Image ImageParameter;
+	private IMendixObject __ImageParameter;
+	private system.proxies.Image ImageParameter;
 
-	public GetImageDimensions(
-		IContext context,
-		IMendixObject _imageParameter
-	)
+	public GetImageDimensions(IContext context, IMendixObject ImageParameter)
 	{
 		super(context);
-		this.__ImageParameter = _imageParameter;
-		this.ImageParameter = _imageParameter == null ? null : system.proxies.Image.initialize(getContext(), _imageParameter);
+		this.__ImageParameter = ImageParameter;
 	}
 
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
+		this.ImageParameter = this.__ImageParameter == null ? null : system.proxies.Image.initialize(getContext(), __ImageParameter);
+
 		// BEGIN USER CODE
 		ImageDimensions imageDimensions = new ImageDimensions(getContext());
 		try (InputStream inputStream = Core.getImage(getContext(), this.ImageParameter.getMendixObject(), false)) {
