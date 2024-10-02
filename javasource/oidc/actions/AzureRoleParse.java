@@ -28,16 +28,25 @@ import system.proxies.UserRole;
 public class AzureRoleParse extends CustomJavaAction<java.util.List<IMendixObject>>
 {
 	private java.lang.String AccessToken;
+	private java.util.List<IMendixObject> __MendixUserRoleList;
+	private java.util.List<system.proxies.UserRole> MendixUserRoleList;
 
-	public AzureRoleParse(IContext context, java.lang.String AccessToken)
+	public AzureRoleParse(IContext context, java.lang.String AccessToken, java.util.List<IMendixObject> MendixUserRoleList)
 	{
 		super(context);
 		this.AccessToken = AccessToken;
+		this.__MendixUserRoleList = MendixUserRoleList;
 	}
 
 	@java.lang.Override
 	public java.util.List<IMendixObject> executeAction() throws Exception
 	{
+		this.MendixUserRoleList = java.util.Optional.ofNullable(this.__MendixUserRoleList)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(__MendixUserRoleListElement -> system.proxies.UserRole.initialize(getContext(), __MendixUserRoleListElement))
+			.collect(java.util.stream.Collectors.toList());
+
 		// BEGIN USER CODE
 		String decodedPayload = getDecodedPayload();
 		JSONArray roles=getRoles(decodedPayload);
@@ -66,7 +75,7 @@ public class AzureRoleParse extends CustomJavaAction<java.util.List<IMendixObjec
 	public java.lang.String getDecodedPayload(){
 		DecodedJWT jwt=JWT.decode(AccessToken);
 		String payload= jwt.getPayload();
-		byte[] decodedBytes = Base64.getDecoder().decode(payload);
+		byte[] decodedBytes = Base64.getUrlDecoder().decode(payload);
 		String decodedPayload = new String(decodedBytes);
 		return decodedPayload;
 	}
@@ -82,9 +91,10 @@ public class AzureRoleParse extends CustomJavaAction<java.util.List<IMendixObjec
 		List<IMendixObject> rolesFromToken=new ArrayList<IMendixObject>();
 		for(int i=0;i<roles.length();i++) {
 			String role=roles.get(i).toString();
-			logger.info(role);
+			logger.debug(role);
+			String GUID = oidc.proxies.microflows.Microflows.sUB_GetUserRoleGUID(context, MendixUserRoleList, role);
 			Role urole = new Role(context);
-    		urole.setRoleName(role);
+    		urole.setRoleName(GUID);
     		rolesFromToken.add(urole.getMendixObject());
 		}
 		return rolesFromToken;
