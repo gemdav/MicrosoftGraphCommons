@@ -27,26 +27,31 @@ import system.proxies.UserRole;
 
 public class AzureRoleParse extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private java.lang.String AccessToken;
-	private java.util.List<IMendixObject> __MendixUserRoleList;
-	private java.util.List<system.proxies.UserRole> MendixUserRoleList;
+	private final java.lang.String AccessToken;
+	/** @deprecated use com.mendix.utils.ListUtils.map(MendixUserRoleList, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final java.util.List<IMendixObject> __MendixUserRoleList;
+	private final java.util.List<system.proxies.UserRole> MendixUserRoleList;
 
-	public AzureRoleParse(IContext context, java.lang.String AccessToken, java.util.List<IMendixObject> MendixUserRoleList)
+	public AzureRoleParse(
+		IContext context,
+		java.lang.String _accessToken,
+		java.util.List<IMendixObject> _mendixUserRoleList
+	)
 	{
 		super(context);
-		this.AccessToken = AccessToken;
-		this.__MendixUserRoleList = MendixUserRoleList;
+		this.AccessToken = _accessToken;
+		this.__MendixUserRoleList = _mendixUserRoleList;
+		this.MendixUserRoleList = java.util.Optional.ofNullable(_mendixUserRoleList)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(mendixUserRoleListElement -> system.proxies.UserRole.initialize(getContext(), mendixUserRoleListElement))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public java.util.List<IMendixObject> executeAction() throws Exception
 	{
-		this.MendixUserRoleList = java.util.Optional.ofNullable(this.__MendixUserRoleList)
-			.orElse(java.util.Collections.emptyList())
-			.stream()
-			.map(__MendixUserRoleListElement -> system.proxies.UserRole.initialize(getContext(), __MendixUserRoleListElement))
-			.collect(java.util.stream.Collectors.toList());
-
 		// BEGIN USER CODE
 		String decodedPayload = getDecodedPayload();
 		JSONArray roles=getRoles(decodedPayload);

@@ -19,22 +19,27 @@ import com.mendix.systemwideinterfaces.core.IMendixObjectMember;
 
 public class CreateClaimsAction extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private java.lang.String EntityName;
-	private IMendixObject __UserProvisioning;
-	private usercommons.proxies.UserProvisioning UserProvisioning;
+	private final java.lang.String EntityName;
+	/** @deprecated use UserProvisioning.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __UserProvisioning;
+	private final usercommons.proxies.UserProvisioning UserProvisioning;
 
-	public CreateClaimsAction(IContext context, java.lang.String EntityName, IMendixObject UserProvisioning)
+	public CreateClaimsAction(
+		IContext context,
+		java.lang.String _entityName,
+		IMendixObject _userProvisioning
+	)
 	{
 		super(context);
-		this.EntityName = EntityName;
-		this.__UserProvisioning = UserProvisioning;
+		this.EntityName = _entityName;
+		this.__UserProvisioning = _userProvisioning;
+		this.UserProvisioning = _userProvisioning == null ? null : usercommons.proxies.UserProvisioning.initialize(getContext(), _userProvisioning);
 	}
 
 	@java.lang.Override
 	public java.util.List<IMendixObject> executeAction() throws Exception
 	{
-		this.UserProvisioning = this.__UserProvisioning == null ? null : usercommons.proxies.UserProvisioning.initialize(getContext(), __UserProvisioning);
-
 		// BEGIN USER CODE
 		IMendixObject  ClaimList = Core.instantiate(getContext(), EntityName);
 	      // BEGIN USER CODE

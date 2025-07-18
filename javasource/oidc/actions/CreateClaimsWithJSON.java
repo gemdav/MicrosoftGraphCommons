@@ -18,12 +18,15 @@ import com.mendix.thirdparty.org.json.JSONObject;
 
 public class CreateClaimsWithJSON extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private java.lang.String OpenIDTokenJSON;
+	private final java.lang.String OpenIDTokenJSON;
 
-	public CreateClaimsWithJSON(IContext context, java.lang.String OpenIDTokenJSON)
+	public CreateClaimsWithJSON(
+		IContext context,
+		java.lang.String _openIDTokenJSON
+	)
 	{
 		super(context);
-		this.OpenIDTokenJSON = OpenIDTokenJSON;
+		this.OpenIDTokenJSON = _openIDTokenJSON;
 	}
 
 	@java.lang.Override

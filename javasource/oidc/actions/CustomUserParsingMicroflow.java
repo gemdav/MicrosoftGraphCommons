@@ -18,24 +18,30 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class CustomUserParsingMicroflow extends CustomJavaAction<IMendixObject>
 {
-	private java.lang.String Microflow;
-	private IMendixObject __Token;
-	private oidc.proxies.Token Token;
-	private java.lang.String OpenIDTokenJSON;
+	private final java.lang.String Microflow;
+	/** @deprecated use Token.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __Token;
+	private final oidc.proxies.Token Token;
+	private final java.lang.String OpenIDTokenJSON;
 
-	public CustomUserParsingMicroflow(IContext context, java.lang.String Microflow, IMendixObject Token, java.lang.String OpenIDTokenJSON)
+	public CustomUserParsingMicroflow(
+		IContext context,
+		java.lang.String _microflow,
+		IMendixObject _token,
+		java.lang.String _openIDTokenJSON
+	)
 	{
 		super(context);
-		this.Microflow = Microflow;
-		this.__Token = Token;
-		this.OpenIDTokenJSON = OpenIDTokenJSON;
+		this.Microflow = _microflow;
+		this.__Token = _token;
+		this.Token = _token == null ? null : oidc.proxies.Token.initialize(getContext(), _token);
+		this.OpenIDTokenJSON = _openIDTokenJSON;
 	}
 
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
-		this.Token = this.__Token == null ? null : oidc.proxies.Token.initialize(getContext(), __Token);
-
 		// BEGIN USER CODE
 		IContext context=getContext();
 		IMendixObject resultObject = (IMendixObject) Core.microflowCall(Microflow)

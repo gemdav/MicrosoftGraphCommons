@@ -32,43 +32,53 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class CreateUserRecord extends CustomJavaAction<IMendixObject>
 {
-	private IMendixObject __UserProvisioning;
-	private usercommons.proxies.UserProvisioning UserProvisioning;
-	private java.util.List<IMendixObject> __Claims;
-	private java.util.List<usercommons.proxies.UserClaim> Claims;
-	private java.util.List<IMendixObject> __ConfigEntityAttributesList;
-	private java.util.List<usercommons.proxies.ClaimEntityAttribute> ConfigEntityAttributesList;
-	private IMendixObject __UserInfoParameter;
-	private usercommons.proxies.UserInfoParam UserInfoParameter;
+	/** @deprecated use UserProvisioning.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __UserProvisioning;
+	private final usercommons.proxies.UserProvisioning UserProvisioning;
+	/** @deprecated use com.mendix.utils.ListUtils.map(Claims, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final java.util.List<IMendixObject> __Claims;
+	private final java.util.List<usercommons.proxies.UserClaim> Claims;
+	/** @deprecated use com.mendix.utils.ListUtils.map(ConfigEntityAttributesList, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final java.util.List<IMendixObject> __ConfigEntityAttributesList;
+	private final java.util.List<usercommons.proxies.ClaimEntityAttribute> ConfigEntityAttributesList;
+	/** @deprecated use UserInfoParameter.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __UserInfoParameter;
+	private final usercommons.proxies.UserInfoParam UserInfoParameter;
 
-	public CreateUserRecord(IContext context, IMendixObject UserProvisioning, java.util.List<IMendixObject> Claims, java.util.List<IMendixObject> ConfigEntityAttributesList, IMendixObject UserInfoParameter)
+	public CreateUserRecord(
+		IContext context,
+		IMendixObject _userProvisioning,
+		java.util.List<IMendixObject> _claims,
+		java.util.List<IMendixObject> _configEntityAttributesList,
+		IMendixObject _userInfoParameter
+	)
 	{
 		super(context);
-		this.__UserProvisioning = UserProvisioning;
-		this.__Claims = Claims;
-		this.__ConfigEntityAttributesList = ConfigEntityAttributesList;
-		this.__UserInfoParameter = UserInfoParameter;
+		this.__UserProvisioning = _userProvisioning;
+		this.UserProvisioning = _userProvisioning == null ? null : usercommons.proxies.UserProvisioning.initialize(getContext(), _userProvisioning);
+		this.__Claims = _claims;
+		this.Claims = java.util.Optional.ofNullable(_claims)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(claimsElement -> usercommons.proxies.UserClaim.initialize(getContext(), claimsElement))
+			.collect(java.util.stream.Collectors.toList());
+		this.__ConfigEntityAttributesList = _configEntityAttributesList;
+		this.ConfigEntityAttributesList = java.util.Optional.ofNullable(_configEntityAttributesList)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(configEntityAttributesListElement -> usercommons.proxies.ClaimEntityAttribute.initialize(getContext(), configEntityAttributesListElement))
+			.collect(java.util.stream.Collectors.toList());
+		this.__UserInfoParameter = _userInfoParameter;
+		this.UserInfoParameter = _userInfoParameter == null ? null : usercommons.proxies.UserInfoParam.initialize(getContext(), _userInfoParameter);
 	}
 
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
-		this.UserProvisioning = this.__UserProvisioning == null ? null : usercommons.proxies.UserProvisioning.initialize(getContext(), __UserProvisioning);
-
-		this.Claims = java.util.Optional.ofNullable(this.__Claims)
-			.orElse(java.util.Collections.emptyList())
-			.stream()
-			.map(__ClaimsElement -> usercommons.proxies.UserClaim.initialize(getContext(), __ClaimsElement))
-			.collect(java.util.stream.Collectors.toList());
-
-		this.ConfigEntityAttributesList = java.util.Optional.ofNullable(this.__ConfigEntityAttributesList)
-			.orElse(java.util.Collections.emptyList())
-			.stream()
-			.map(__ConfigEntityAttributesListElement -> usercommons.proxies.ClaimEntityAttribute.initialize(getContext(), __ConfigEntityAttributesListElement))
-			.collect(java.util.stream.Collectors.toList());
-
-		this.UserInfoParameter = this.__UserInfoParameter == null ? null : usercommons.proxies.UserInfoParam.initialize(getContext(), __UserInfoParameter);
-
 		// BEGIN USER CODE
 		ILogNode LOG = Core.getLogger("UserCommons");
 		LOG.info("Stared user creation");
