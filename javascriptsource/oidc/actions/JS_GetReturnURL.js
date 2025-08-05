@@ -16,6 +16,6 @@ import { Big } from "big.js";
  */
 export async function JS_GetReturnURL() {
 	// BEGIN USER CODE
-	return location.hash;
+	return location.search+location.hash;
 	// END USER CODE
 }

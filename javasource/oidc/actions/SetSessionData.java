@@ -10,6 +10,8 @@
 package oidc.actions;
 
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.util.Optional;
 import com.mendix.core.Core;
 import com.mendix.core.conf.RuntimeVersion;
 import com.mendix.m2ee.api.IMxRuntimeRequest;
@@ -66,10 +68,52 @@ public class SetSessionData extends CustomJavaAction<java.lang.Boolean>
 	}
 
 	// BEGIN EXTRA CODE
-	private void setCookies(IMxRuntimeResponse response, ISession session) throws Exception{
-		response.addCookie(Core.getConfiguration().getSessionIdCookieName(), session.getId().toString(), "/", "", -1, true,true);
-		response.addCookie("XASID", "0." + Core.getXASId(), "/", "", -1, true);
+	private void setCookies(IMxRuntimeResponse response, ISession session) throws Exception {
+		String path = getPath(context());
+		String[] mxVersion = Core.getRuntimeVersion().split("\\.");
+		if (Integer.parseInt(mxVersion[0]) >= 10 && Integer.parseInt(mxVersion[1]) >= 13 || Integer.parseInt(mxVersion[0]) >= 11) {
+			// use reflection to call the addCookie method with 4 parameters, which was
+			// added in 10.13 and above
+			setSessionCookiesUsingReflection(response, session, path);
+		} else {
+			addManualCookies(response, session, path);
+		}
 	}
-	
+
+	private void setSessionCookiesUsingReflection(IMxRuntimeResponse response, ISession session, String path)
+			throws Exception {
+		@SuppressWarnings("rawtypes")
+		Class[] methodSignature = { IMxRuntimeResponse.class, ISession.class, String.class, boolean.class };
+		Method addSessionCookies = Core.class.getMethod("addSessionCookies", methodSignature);
+		try {
+			addSessionCookies.invoke(null, response, session, path, false);
+		} catch (Exception e) {
+			addManualCookies(response, session, path);
+		}
+	}
+
+	private void addManualCookies(IMxRuntimeResponse response, ISession session, String path) {
+		response.addCookie(Core.getConfiguration().getSessionIdCookieName(), session.getId().toString(), path, "", -1,
+				true, true);
+		response.addCookie("clear_cache", "1", path, "", -1);
+	}
+
+	private String getPath(IContext Context) {
+		try {
+			String[] mxVersion = Core.getRuntimeVersion().split("\\.");
+			if (Integer.parseInt(mxVersion[0]) < 10) {
+				return "/";
+			}
+			Class[] methodSignature = {};
+			Method getRootUrl = Context.getRuntimeRequest().get().getClass().getMethod("getRootUrl", methodSignature);
+			String url = (String) getRootUrl.invoke(Context.getRuntimeRequest().get());
+			URI uri = new URI(url.contains("://") ? url : "https://" + url);
+			String path = Optional.ofNullable(uri.getPath()).filter(p -> !p.isEmpty() && !p.equals("/")).orElse("/");
+			return "/" + path.replaceFirst("^/", "");
+		} catch (Exception e) {
+			return "/";
+		}
+	}
+
 	// END EXTRA CODE
 }
