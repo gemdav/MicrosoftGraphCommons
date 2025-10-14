@@ -39,3 +39,7 @@
 /modeler-merge-marker
 /microsoftgraphcommons.mpr.bak
 /microsoftgraphcommons.mpr.lock
+/vendorlib/temp/
+.DS_Store
+/.svn/
+/mprcontents/mprjournal*
