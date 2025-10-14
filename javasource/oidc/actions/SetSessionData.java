@@ -17,12 +17,12 @@ import com.mendix.core.conf.RuntimeVersion;
 import com.mendix.m2ee.api.IMxRuntimeRequest;
 import com.mendix.m2ee.api.IMxRuntimeResponse;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import system.proxies.TokenInformation;
 import com.mendix.systemwideinterfaces.core.ISession;
 import com.mendix.systemwideinterfaces.core.IUser;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class SetSessionData extends CustomJavaAction<java.lang.Boolean>
+public class SetSessionData extends UserAction<java.lang.Boolean>
 {
 	private final java.lang.String Username;
 

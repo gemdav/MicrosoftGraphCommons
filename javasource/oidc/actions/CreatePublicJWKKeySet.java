@@ -12,11 +12,11 @@ package oidc.actions;
 import java.util.LinkedList;
 import java.util.List;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CreatePublicJWKKeySet extends CustomJavaAction<java.lang.String>
+public class CreatePublicJWKKeySet extends UserAction<java.lang.String>
 {
 	private final java.lang.String signJWK;
 	private final java.lang.String encryptJWK;

@@ -13,12 +13,12 @@ import java.util.Base64;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Decodes a JWT string into a plain text JSON for the header and payload. This enables the user to implement a specific JSON mapping that decodes the header or payload. Throws an exception when the token could not be decoded or verified.
  */
-public class DecodeJWTPlainText extends CustomJavaAction<java.lang.String>
+public class DecodeJWTPlainText extends UserAction<java.lang.String>
 {
 	private final java.lang.String encodedJWT;
 

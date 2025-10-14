@@ -10,13 +10,13 @@
 package oidc.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.nimbusds.jose.JWEObject;
 import com.nimbusds.jose.crypto.RSADecrypter;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.RSAKey;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class Decrypt extends CustomJavaAction<java.lang.String>
+public class Decrypt extends UserAction<java.lang.String>
 {
 	private final java.lang.String jwk;
 	private final java.lang.String data;

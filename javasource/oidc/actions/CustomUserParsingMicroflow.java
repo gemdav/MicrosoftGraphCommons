@@ -12,11 +12,11 @@ package oidc.actions;
 import java.util.List;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import system.proxies.User;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CustomUserParsingMicroflow extends CustomJavaAction<IMendixObject>
+public class CustomUserParsingMicroflow extends UserAction<IMendixObject>
 {
 	private final java.lang.String Microflow;
 	/** @deprecated use Token.getMendixObject() instead. */

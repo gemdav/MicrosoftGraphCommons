@@ -10,12 +10,12 @@
 package oidc.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GetClientId extends CustomJavaAction<java.lang.String>
+public class GetClientId extends UserAction<java.lang.String>
 {
 	private final java.lang.String DecodedAccesstoken;
 

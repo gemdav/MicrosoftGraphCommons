@@ -10,12 +10,12 @@
 package oidc.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import oidc.proxies.Claim;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.thirdparty.org.json.JSONObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CreateClaimsString extends CustomJavaAction<java.lang.String>
+public class CreateClaimsString extends UserAction<java.lang.String>
 {
 	/** @deprecated use com.mendix.utils.ListUtils.map(claimsList, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
 	@java.lang.Deprecated(forRemoval = true)

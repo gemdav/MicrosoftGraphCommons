@@ -21,11 +21,11 @@ import com.mendix.core.Core;
 import com.mendix.logging.ILogNode;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.webui.CustomJavaAction;
 import oidc.proxies.Role;
 import system.proxies.UserRole;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class RoleAssignment extends CustomJavaAction<java.util.List<IMendixObject>>
+public class RoleAssignment extends UserAction<java.util.List<IMendixObject>>
 {
 	private final java.lang.String AccessToken;
 

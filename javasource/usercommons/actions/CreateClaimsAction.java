@@ -13,11 +13,11 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import java.util.ArrayList;
 import java.util.List;
 import com.mendix.core.Core;
-import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.IMendixObjectMember;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CreateClaimsAction extends CustomJavaAction<java.util.List<IMendixObject>>
+public class CreateClaimsAction extends UserAction<java.util.List<IMendixObject>>
 {
 	private final java.lang.String EntityName;
 	/** @deprecated use UserProvisioning.getMendixObject() instead. */

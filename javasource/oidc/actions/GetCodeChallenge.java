@@ -13,7 +13,7 @@ import communitycommons.StringUtils;
 import java.security.MessageDigest;
 import java.util.Base64;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Hashes a value using the SHA-256 hash algorithm. 
@@ -23,7 +23,7 @@ import com.mendix.webui.CustomJavaAction;
  * 
  * Returns a SHA-256 hash of 'value', with length 'length'
  */
-public class GetCodeChallenge extends CustomJavaAction<java.lang.String>
+public class GetCodeChallenge extends UserAction<java.lang.String>
 {
 	private final java.lang.String codeVerifier;
 

@@ -11,12 +11,12 @@ package oidc.actions;
 
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import usercommons.proxies.UserClaim;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.thirdparty.org.json.JSONObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CreateClaimsWithJSON extends CustomJavaAction<java.util.List<IMendixObject>>
+public class CreateClaimsWithJSON extends UserAction<java.util.List<IMendixObject>>
 {
 	private final java.lang.String OpenIDTokenJSON;
 

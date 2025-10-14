@@ -12,12 +12,12 @@ package mxmodelreflection.actions;
 import mxmodelreflection.TokenReplacer;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Search the parameter text for the token from the parameter TokenObject, replace the value with a value from the parameter ValueObject.
  */
-public class ReplaceToken extends CustomJavaAction<java.lang.String>
+public class ReplaceToken extends UserAction<java.lang.String>
 {
 	/** @deprecated use TokenObject.getMendixObject() instead. */
 	@java.lang.Deprecated(forRemoval = true)

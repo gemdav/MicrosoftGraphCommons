@@ -12,9 +12,9 @@ package oidc.actions;
 import java.util.HashMap;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GetScopeFromToken extends CustomJavaAction<java.lang.String>
+public class GetScopeFromToken extends UserAction<java.lang.String>
 {
 	private final java.lang.String DecodedJWT;
 

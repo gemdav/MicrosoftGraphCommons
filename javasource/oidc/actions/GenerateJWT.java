@@ -19,12 +19,12 @@ import com.mendix.core.Core;
 import com.mendix.core.CoreException;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.webui.CustomJavaAction;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.RSAKey;
 import oidc.proxies.Audience;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GenerateJWT extends CustomJavaAction<java.lang.String>
+public class GenerateJWT extends UserAction<java.lang.String>
 {
 	private final java.lang.String jwk;
 	private final oidc.proxies.ENU_SigningAlgorithm algorithm;

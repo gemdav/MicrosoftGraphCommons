@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 import mxmodelreflection.proxies.MxObjectMember;
 import mxmodelreflection.proxies.MxObjectType;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import mxmodelreflection.proxies.PrimitiveTypes;
 import usercommons.implementation.common.MendixUtils;
 import usercommons.implementation.common.RandomPasswordGenerator;
@@ -29,8 +28,9 @@ import system.proxies.UserReportInfo;
 import system.proxies.TimeZone;
 import system.proxies.Language;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class CreateUserRecord extends CustomJavaAction<IMendixObject>
+public class CreateUserRecord extends UserAction<IMendixObject>
 {
 	/** @deprecated use UserProvisioning.getMendixObject() instead. */
 	@java.lang.Deprecated(forRemoval = true)

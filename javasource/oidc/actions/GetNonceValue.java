@@ -10,12 +10,12 @@
 package oidc.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GetNonceValue extends CustomJavaAction<java.lang.String>
+public class GetNonceValue extends UserAction<java.lang.String>
 {
 	private final java.lang.String Id_token;
 
